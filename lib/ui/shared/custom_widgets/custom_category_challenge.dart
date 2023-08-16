@@ -5,8 +5,8 @@ import 'package:challenge_two/ui/shared/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomButton extends StatelessWidget {
-  CustomButton({
+class CustomCategoryChallenge extends StatelessWidget {
+  CustomCategoryChallenge({
     super.key,
     this.text,
     this.textColor,
@@ -21,7 +21,6 @@ class CustomButton extends StatelessWidget {
     this.imageHeight,
     this.fontWeight,
     this.fontSize,
-    this.isStadiumShape = true,
   });
 
   final String? text;
@@ -37,7 +36,6 @@ class CustomButton extends StatelessWidget {
   final double? imageHeight;
   final double? fontSize;
   final FontWeight? fontWeight;
-  final bool? isStadiumShape;
 
   @override
   Widget build(BuildContext context) {
@@ -76,16 +74,7 @@ class CustomButton extends StatelessWidget {
                 )
               : null,
           backgroundColor: backgroundColor ?? AppColors.mainOrangeColor,
-          shape: isStadiumShape!
-              ? StadiumBorder()
-              : CircleBorder(
-                  side: BorderSide(
-                    width: 0,
-                    // color: isDisabled!
-                    //     ? disableColor ?? AppColors.grey200Color
-                    //     : borderColor ?? fillColor!,
-                  ),
-                ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           // fixedSize: Size(
           //   width ?? screenWidth(1.1),
           //   height ?? screenHeight(12),

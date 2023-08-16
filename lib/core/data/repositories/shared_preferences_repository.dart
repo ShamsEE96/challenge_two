@@ -16,6 +16,7 @@ class SharedPreferencesRepository {
   String PREF_CART_LIST = 'cart_list';
   String PREF_ORDER_PLACED = 'order_placed';
   String PREF_EMAIL_RESET_PASSWORD = 'email_reset_password';
+  String PREF_SUB_STATUS = 'sub_status';
   //  String PREF_ISLOGGED = 'is_logged';
 
   void setFirstLaunch(bool value) {
@@ -125,6 +126,22 @@ class SharedPreferencesRepository {
   void clearResetPasswordEmail() {
     globalSharedPreferences.remove(PREF_EMAIL_RESET_PASSWORD);
     // globalSharedPreferences.clear();
+  }
+
+  void setSubStatus(bool value) {
+    setPreference(
+      dataType: DataType.BOOL,
+      key: PREF_SUB_STATUS,
+      value: value,
+    );
+  }
+
+  bool getSubStatus() {
+    if (globalSharedPreferences.containsKey(PREF_SUB_STATUS)) {
+      return getPreference(key: PREF_SUB_STATUS);
+    } else {
+      return true;
+    }
   }
 
   //  void setFirstLogin(bool value) {

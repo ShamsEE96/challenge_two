@@ -18,6 +18,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIconColor,
     this.maxHeight,
     this.maxWidth,
+    this.onChanged,
   });
 
   final String hintText;
@@ -33,11 +34,12 @@ class CustomTextFormField extends StatelessWidget {
   final Color? suffixIconColor;
   final double? maxHeight;
   final double? maxWidth;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      // onChanged: myValidator,
+      onChanged: onChanged,
       controller: controller,
       validator: validator,
       // autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -55,13 +57,14 @@ class CustomTextFormField extends StatelessWidget {
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(
-            color: AppColors.transparentColor,
+            width: 1,
+            color: AppColors.mainGreyColor,
           ),
           borderRadius: BorderRadius.circular(30),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide.none,
+          // borderSide: BorderSide.none,
         ),
         filled: true,
         hintStyle: TextStyle(

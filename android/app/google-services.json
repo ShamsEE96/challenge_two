@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "413149315659",
+    "project_id": "fake-shop-58abc",
+    "storage_bucket": "fake-shop-58abc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413149315659:android:e3ec3d5e96f7e2f40743ce",
+        "android_client_info": {
+          "package_name": "com.example.challenge_two"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413149315659-1juitjgao83dmubqogs7o756or2rcofe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs_qqGa13MZS53DrmSbKs8CEKTuCzErns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413149315659-1juitjgao83dmubqogs7o756or2rcofe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

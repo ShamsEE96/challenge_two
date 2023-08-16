@@ -3,8 +3,6 @@ import 'package:challenge_two/ui/shared/colors.dart';
 import 'package:challenge_two/ui/shared/custom_widgets/custom_text.dart';
 import 'package:challenge_two/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:challenge_two/ui/shared/utils.dart';
-import 'package:challenge_two/ui/views/splash_screen_view/splash_screen_controller.dart';
-import 'package:challenge_two/ui/views/splash_screen_view/splash_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,14 +27,14 @@ class CustomDrawer extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            IconButton(
-              onPressed: () {
-                storage.clearTokenInfo();
-                Get.delete<SplashScreenController>();
-                Get.off(() => SplashScreenView());
-              },
-              icon: Icon(Icons.logout),
-            ),
+            // IconButton(
+            //   onPressed: () {
+            //     storage.clearTokenInfo();
+            //     Get.delete<SplashScreenController>();
+            //     Get.off(() => SplashScreenView());
+            //   },
+            //   icon: Icon(Icons.logout),
+            // ),
             Text('Options 1'),
             Text('Options 2'),
             InkWell(

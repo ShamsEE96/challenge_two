@@ -1,7 +1,12 @@
 enum BottomNavigationEnum {
-  MENU,
-  OFFERS,
+  ALL,
   HOME,
-  PROFILE,
-  MORE,
+  CART,
 }
+// enum BottomNavigationEnum {
+//   MENU,
+//   OFFERS,
+//   HOME,
+//   PROFILE,
+//   MORE,
+// }

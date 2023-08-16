@@ -1,23 +1,19 @@
 import 'dart:convert';
 
-import 'package:challenge_two/core/data/models/apis/meal_model.dart';
+import 'package:challenge_two/core/data/models/apis/product_model.dart';
 
 class CartModel {
   int? count;
   double? total;
-  MealModel? mealModel;
+  ProductModel? productModel;
 
-  CartModel({
-    this.count,
-    this.total,
-    this.mealModel,
-  });
+  CartModel({this.count, this.total, this.productModel});
 
   CartModel.fromJson(Map<String, dynamic> json) {
     count = json['count'];
     total = json['total'];
-    mealModel = json['meal_model'] != null
-        ? new MealModel.fromJson(json['meal_model'])
+    productModel = json['product_model'] != null
+        ? new ProductModel.fromJson(json['product_model'])
         : null;
   }
 
@@ -25,8 +21,8 @@ class CartModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['count'] = this.count;
     data['total'] = this.total;
-    if (this.mealModel != null) {
-      data['meal_model'] = this.mealModel!.toJson();
+    if (this.productModel != null) {
+      data['product_model'] = this.productModel!.toJson();
     }
     return data;
   }
@@ -35,7 +31,7 @@ class CartModel {
     return {
       'count': model.count,
       'total': model.total,
-      'meal_model': model.mealModel,
+      'product_model': model.productModel,
     };
   }
 

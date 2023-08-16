@@ -2,7 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:challenge_two/core/enums/connectivity_status.dart';
 import 'package:challenge_two/core/translation/app_translation.dart';
 import 'package:challenge_two/ui/shared/utils.dart';
-import 'package:challenge_two/ui/views/splash_screen_view/splash_screen_view.dart';
+import 'package:challenge_two/ui/views/main_view/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: SplashScreenView(),
+        home: MainView(),
       ),
     );
   }

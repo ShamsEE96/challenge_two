@@ -1,4 +1,4 @@
-import 'package:challenge_two/core/data/models/apis/meal_model.dart';
+import 'package:challenge_two/core/data/models/apis/product_model.dart';
 import 'package:challenge_two/core/data/models/cart_model.dart';
 import 'package:get/get.dart';
 
@@ -19,10 +19,10 @@ class CartService {
     calcCartTotal();
   }
 
-  CartModel? getCartModel(MealModel mealModel) {
+  CartModel? getCartModel(ProductModel productModel) {
     try {
       return cartList.firstWhere(
-        (element) => element.mealModel!.id == mealModel.id,
+        (element) => element.productModel!.id == productModel.id,
       );
     } catch (e) {
       return null;
@@ -39,11 +39,11 @@ class CartService {
     return cartCount.value;
   }
 
-  double calcMealTotal({
-    required MealModel mealModel,
+  double calcProductTotal({
+    required ProductModel productModel,
     required int count,
   }) {
-    return (mealModel.price! * count).toDouble();
+    return (productModel.price! * count).toDouble();
   }
 
   void calcCartTotal() {
@@ -61,11 +61,11 @@ class CartService {
 
 // //!---- Check if Meal Exist in Cart List ----
 //   bool isMealExist({
-//     required MealModel mealModel,
+//     required ProductModel productModel,
 //   }) {
 //     CartModel? result = cartList.firstWhere(
 //       (element) {
-//         return element.mealModel!.id == mealModel.id;
+//         return element.productModel!.id == productModel.id;
 //       },
 //       orElse: () {
 //         return CartModel();
@@ -79,7 +79,7 @@ class CartService {
 //     required CartModel cartModel,
 //   }) {
 //     if (isMealExist(
-//       mealModel: cartModel.mealModel!,
+//       productModel: cartModel.productModel!,
 //     )) {
 //       int index = cartList.indexOf(cartModel);
 //       return index;
@@ -89,13 +89,14 @@ class CartService {
 
 //!---- Add Item to Cart ----
   void addToCartList({
-    required MealModel mealModel,
+    required ProductModel productModel,
     required int count,
     Function? afterAdd,
   }) {
-    double mealTotal = calcMealTotal(count: count, mealModel: mealModel);
-    if (getCartModel(mealModel) != null) {
-      int index = getIndex(getCartModel(mealModel)!);
+    double mealTotal =
+        calcProductTotal(count: count, productModel: productModel);
+    if (getCartModel(productModel) != null) {
+      int index = getIndex(getCartModel(productModel)!);
       cartList[index].count = cartList[index].count! + count;
       cartList[index].total = cartList[index].total! + mealTotal;
     } else {
@@ -103,7 +104,7 @@ class CartService {
         CartModel(
           count: count,
           total: mealTotal,
-          mealModel: mealModel,
+          productModel: productModel,
         ),
       );
     }
@@ -130,20 +131,20 @@ class CartService {
     required CartModel cartModel,
     Function? afterChange,
   }) {
-    CartModel? result = getCartModel(cartModel.mealModel!)!;
+    CartModel? result = getCartModel(cartModel.productModel!)!;
     int index = getIndex(result);
     // double mealTotal =
-    //     calcMealTotal(mealModel: result.mealModel!, count: result.count!);
+    //     calcMealTotal(productModel: result.productModel!, count: result.count!);
 
     if (increase) {
       result.count = result.count! + 1;
-      result.total = result.total! + cartModel.mealModel!.price!;
+      result.total = result.total! + cartModel.productModel!.price!;
       cartCount.value += 1;
       calcCartTotal();
     } else {
       if (result.count! > 1) {
         result.count = result.count! - 1;
-        result.total = result.total! - cartModel.mealModel!.price!;
+        result.total = result.total! - cartModel.productModel!.price!;
         cartCount.value -= 1;
         calcCartTotal();
       }

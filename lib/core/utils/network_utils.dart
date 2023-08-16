@@ -8,7 +8,7 @@ import 'package:path/path.dart' as path;
 import 'package:http_parser/http_parser.dart';
 
 class NetworkUtil {
-  static String baseUrl = 'training.owner-tech.com';
+  static String baseUrl = 'fakestoreapi.com';
   static var client = http.Client();
 
   static Future<dynamic> sendRequest({

@@ -5,10 +5,15 @@ import 'package:challenge_two/core/enums/connectivity_status.dart';
 import 'package:challenge_two/core/enums/message_type.dart';
 import 'package:challenge_two/core/services/cart_service.dart';
 import 'package:challenge_two/core/services/connectivity_service.dart';
+import 'package:challenge_two/core/services/location_service.dart';
+import 'package:challenge_two/core/services/notification_service.dart';
+import 'package:challenge_two/core/translation/app_translation.dart';
 import 'package:challenge_two/core/utils/network_utils.dart';
 import 'package:challenge_two/ui/shared/colors.dart';
+import 'package:challenge_two/ui/shared/custom_widgets/custom_button.dart';
 import 'package:challenge_two/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -74,6 +79,8 @@ SharedPreferencesRepository get storage =>
 
 CartService get cartService => Get.find<CartService>();
 ConnectivityService get connectivityService => Get.find<ConnectivityService>();
+LocationService get locationService => Get.find<LocationService>();
+NotificationService get notificationService => Get.find<NotificationService>();
 
 void customLoader() => BotToast.showCustomLoading(
         // duration: Duration(seconds: 10),
@@ -85,10 +92,8 @@ void customLoader() => BotToast.showCustomLoading(
           color: AppColors.placeholderGreyColor.withOpacity(0.5),
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Lottie.asset(
-          'assets/animations/64809-pizza-loading.json',
-          width: screenWidth(5),
-          height: screenWidth(5),
+        child: SpinKitCircle(
+          color: AppColors.mainBlueColor,
         ),
       );
     });
@@ -115,4 +120,35 @@ void showNoConnectionMessage() {
     message: 'Please check internet connection',
     messageType: MessageType.WARNING,
   );
+}
+
+void showAlertDialoug({
+  String? title,
+  required String? middleText,
+  required Function? onCancel,
+  required Function? onConfirm,
+}) {
+  Get.defaultDialog(
+    title: title ?? "",
+    middleText: middleText ?? "",
+    cancel: CustomButton(
+      onPressed: () {
+        if (onCancel != null) onCancel();
+      },
+      width: screenWidth(3),
+      text: tr("key_no"),
+      backgroundColor: AppColors.mainRedColor,
+    ),
+    confirm: CustomButton(
+      onPressed: () {
+        if (onConfirm != null) onConfirm();
+      },
+      width: screenWidth(3),
+      text: tr("key_yes"),
+    ),
+    onCancel: () {}, onConfirm: () {},
+
+    // content:
+  );
+  // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
 }
